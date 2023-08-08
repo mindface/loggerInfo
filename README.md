@@ -10,3 +10,5 @@ Framework　Information
 react
 react-redux
 
+task app
+<img width="581" alt="スクリーンショット 2023-08-08 17 00 16" src="https://github.com/mindface/loggerInfo/assets/37267958/a9bffc5d-eb19-46af-aedf-f1117fc986ca">
