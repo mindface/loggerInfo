@@ -1,11 +1,10 @@
 ---
-
 import Layout from '../layouts/Layout.astro';
-import IndexDashBord from '../container/IndexDashBord'
+import TaskCycleContainer from "../container/TaskCycleContainer";
 ---
 
 <Layout title="Welcome to Astro.">
 	<body>
-		<IndexDashBord client:only />
+		<TaskCycleContainer client:only />
 	</body>
 </Layout>

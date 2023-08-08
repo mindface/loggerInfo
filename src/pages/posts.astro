@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PostsInit from "../jscomponents/PostsInit";
+import PostContainer from "../container/PostContainer";
+---
+
+<Layout title="Welcome to Astro.">
+	<body>
+		<PostsInit client:only />
+		<PostContainer client:only />
+	</body>
+</Layout>
+../container/PostsBox../container/PostContainer

@@ -1,0 +1,14 @@
+---
+const list = [
+	{id:1,path:"/",name:"home"},
+	{id:2,path:"/posts",name:"posts"},
+	{id:2,path:"/taskCycle",name:"taskCycle"}
+];
+
+---
+
+<header class="header gnav">
+  <div class="heaher-inner">
+		{list.map((item) => <a href={item.path}>{item.name}</a>)}
+	</div>
+</header>
