@@ -13,7 +13,6 @@ export const TaskCycle: React.FC = () => {
   });
   const [title, titleSet] = useState("");
   const [body, bodySet] = useState("");
-  const [taskType, taskTypeSet] = useState("");
   const [taskList, taskListSet] = useState(tasks ?? []);
 
   const dispatch = useDispatch<AppDispatch>();
@@ -23,7 +22,6 @@ export const TaskCycle: React.FC = () => {
       id: taskList.length + 1,
       title: title,
       body: body,
-      taskType: taskType,
     };
     taskListSet([...taskList, item]);
   };
@@ -34,35 +32,14 @@ export const TaskCycle: React.FC = () => {
         <div className="field pb-1">
           <Input
             label="タイトル"
-            value={title}
             onChangeAction={(v) => {
               titleSet(v);
             }}
           />
         </div>
         <div className="field pb-1">
-          <Input
-            label="タスクタイプ"
-            value={taskType}
-            onChangeAction={(v) => {
-              taskTypeSet(v);
-            }}
-          />
-        </div>
-        <div className="field pb-1">
-          <select>
-            <option>選択してください</option>
-            {tasks.map((task, k) => (
-              <option key={`task${k}`} value={task.title}>
-                {task.title}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="field pb-1">
           <Textarea
             label="詳細"
-            value={body}
             onChangeAction={(v) => {
               bodySet(v);
             }}
@@ -76,7 +53,7 @@ export const TaskCycle: React.FC = () => {
         {(taskList ?? []).map((item) => (
           <div key={item.id} className="card">
             <h4 className="title pb-1">{item.title}</h4>
-            <div className="body">{item.body}</div>
+            <div className="body">{item.body.slice(0, 64)}...</div>
           </div>
         ))}
       </div>

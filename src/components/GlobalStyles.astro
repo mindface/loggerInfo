@@ -176,10 +176,18 @@
 
 	.card {
 		display: inline-block;
-		margin: 0 8px 0 0 0;
+		max-width: 320px;
+		width: 100%;
+		margin: 0 8px 0 0;
 		padding: 8px;
 		background-color: var(--white-color);
 		border: 1px solid var(--main-color);
+	}
+	.card	.body {
+		max-height: 3.4rem;
+		word-wrap: break-word;
+		line-height: 1.7;
+		overflow: hidden;
 	}
 	.gnav {
 		position: fixed;
