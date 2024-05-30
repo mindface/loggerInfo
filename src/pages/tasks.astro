@@ -1,10 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PostsInit from "../jscomponents/PostsInit";
-import PostContainer from "../container/PostContainer";
+import TaskContainer from "../container/TaskContainer";
 ---
 
 <Layout title="task cycle | memory">
-	<PostsInit client:only />
-	<PostContainer client:load />
+	<TaskContainer client:only />
 </Layout>

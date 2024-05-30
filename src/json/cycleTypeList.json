@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "value": "image_move_setting",
+    "name": "イメージ 運動調整"
+  },
+  {
+    "id": "2",
+    "value": "image_pedagogy_physics",
+    "name": "イメージ 座学物理"
+  },
+  {
+    "id": "3",
+    "value": "image_pedagogy_mathematics",
+    "name": "イメージ 座学数学"
+  },
+  {
+    "id": "4",
+    "value": "imagevideo_move_setting",
+    "name": "イメージ動画 運動調整"
+  },
+  {
+    "id": "5",
+    "value": "imagevideo_pedagogy_physics",
+    "name": "イメージ動画 座学物理"
+  },
+  {
+    "id": "6",
+    "value": "imagevideo_pedagogy_mathematics",
+    "name": "イメージ動画 座学数学"
+  },
+  {
+    "id": "7",
+    "value": "theory_move_setting",
+    "name": "理論 運動調整"
+  },
+  {
+    "id": "8",
+    "value": "theory_pedagogy_physics",
+    "name": "理論 座学物理"
+  },
+  {
+    "id": "9",
+    "value": "theory_pedagogy_mathematics",
+    "name": "理論 座学数学"
+  }
+]

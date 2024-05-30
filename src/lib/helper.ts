@@ -14,4 +14,17 @@ function getRandomString(length: number) {
   return result;
 }
 
-export { getRandomInt, getRandomString };
+function countCharacters(input:string) {
+  let count = 0;
+  for (let index = 0; index < input.length; index++) {
+     let char = input[index]
+     if( char.charCodeAt(0) >= 32 && char.charCodeAt(0) <= 127 ) {
+      count += 1
+     } else {
+      count += 1
+     }
+  }
+  return count
+}
+
+export { getRandomInt, getRandomString, countCharacters };

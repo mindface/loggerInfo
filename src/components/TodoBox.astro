@@ -1,0 +1,21 @@
+---
+let todos = ['astro','next task'];
+---
+
+
+<div class="todo">
+	<ul>
+		{todos.map((item) => <p>{item}</p>)}
+	</ul>
+</div>
+
+<style>
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+</style>

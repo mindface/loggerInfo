@@ -14,7 +14,9 @@ function Textarea(props: Props) {
 
   const [textareaValue, textareaValueSet] = useState(value ?? "");
   const [textareaId, _] = useState(
-    `${getRandomString(8)}-${id}` ?? getRandomString(8),
+    `${id}` ?? getRandomString(8),
+    // サーバーとクライアントサイドで異なるためコメントアウト
+    // `${getRandomString(8)}-${id}` ?? getRandomString(8),
   );
 
   return (

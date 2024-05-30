@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import postReducer from "./postSlice";
-import taskReducer from "./taskSlice";
+import toolCycleReducer from "./toolCycleSlice";
+import methodReducer from "./methodSlice";
 
 export const store = configureStore({
   reducer: {
     postStore: postReducer,
-    taskStore: taskReducer,
+    toolCycleStore: toolCycleReducer,
+    methodStore: methodReducer
   },
 });
 

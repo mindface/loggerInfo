@@ -5,18 +5,14 @@ import { getPost } from "../store/postSlice";
 import type { AppDispatch } from "../store";
 import PostForm from "./PostForm";
 
-import Input from "./parts/Input";
-import Textarea from "./parts/Textarea";
-import Button from "./parts/Button";
-
 export const Post: React.FC = () => {
   const posts = useSelector((state: RootState) => state.postStore.posts);
-  const tasks = useSelector((state: RootState) => state.taskStore.tasks);
+  const toolCycles = useSelector((state: RootState) => state.toolCycleStore.toolCycles);
 
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     // dispatch(getPost());
-    console.log(tasks);
+    console.log(toolCycles);
   }, []);
   return (
     <div className="info">

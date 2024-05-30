@@ -15,7 +15,8 @@ function Input(props: Props) {
 
   const [inputValue, inputValueSet] = useState(value ?? "");
   const [inputId, _] = useState(
-    `${getRandomString(8)}-${id}` ?? getRandomString(8),
+    `${id}` ?? getRandomString(8),
+    // `${getRandomString(8)}-${id}` ?? getRandomString(8),
   );
 
   return (

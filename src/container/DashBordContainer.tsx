@@ -6,7 +6,6 @@ import DashBord from "../jscomponents/DashBord";
 const DashBordContainer: React.FC = () => {
   return (
     <div className="info">
-      {/* {posts.map((item) => <>{item.title}</>)} */}
       <DashBord />
     </div>
   );

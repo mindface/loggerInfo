@@ -12,6 +12,7 @@ export interface Task {
 }
 
 export interface TaskState {
+  isFetching: Boolean,
   tasks: Task[];
 }
 
@@ -21,7 +22,6 @@ export const getTask = createAsyncThunk("post/fetch", async (thunkAPI) => {
   );
 });
 export const sendTask = createAsyncThunk("post/send", async (data: Task) => {
-  console.log(data);
   return await fetch("http://localhost:3003/api/posts", {
     method: "POST",
     headers: {
@@ -32,6 +32,7 @@ export const sendTask = createAsyncThunk("post/send", async (data: Task) => {
 });
 
 const initialState: TaskState = {
+  isFetching: false,
   tasks: [
     {
       id: 1,
@@ -49,20 +50,24 @@ const initialState: TaskState = {
 export const taskSlice = createSlice({
   name: "task",
   initialState,
-  reducers: {
-    addTask: (state, action: PayloadAction<Task>) => {
-      state.tasks.push(action.payload);
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getTask.fulfilled, (state, action) => {
+    builder.addCase(getTask.pending, (state, action) => {
+      state.isFetching = true;
+    }).addCase(getTask.fulfilled, (state, action) => {
       state.tasks = action.payload;
+    }).addCase(getTask.rejected, (state, action) => {
+      state.isFetching = false;
     });
-    builder.addCase(sendTask.fulfilled, (state, action) => {
+    builder.addCase(sendTask.pending, (state, action) => {
+      state.isFetching = true;
+    }).addCase(sendTask.fulfilled, (state, action) => {
       state.tasks = [
         ...state.tasks,
         { ...action.payload.item, id: state.tasks.length + 1 },
       ];
+    }).addCase(sendTask.rejected, (state, action) => {
+      state.isFetching = false;
     });
   },
 });
@@ -70,7 +75,5 @@ export const taskSlice = createSlice({
 export const taskStore = configureStore({
   reducer: taskSlice.reducer,
 });
-
-export const { addTask } = taskSlice.actions;
 
 export default taskSlice.reducer;

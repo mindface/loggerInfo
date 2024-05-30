@@ -1,7 +1,8 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../store/index";
 import { sendPost } from "../store/postSlice";
+import { getToolCycle } from "../store/toolCycleSlice";
 import type { Post as PostType } from "../store/postSlice";
 import type { AppDispatch } from "../store";
 
@@ -14,7 +15,7 @@ type Props = {
   edititem?: PostType;
 };
 
-export const PostForm: React.FC<Props> = (props: Props) => {
+export const TaskForm: React.FC<Props> = (props: Props) => {
   const toolCycles = useSelector((state: RootState) => state.toolCycleStore.toolCycles);
   const dispatch = useDispatch<AppDispatch>();
   const [title, titleSet] = useState("");
@@ -29,6 +30,10 @@ export const PostForm: React.FC<Props> = (props: Props) => {
     };
     dispatch(sendPost(addItem));
   };
+
+  useMemo(() => {
+    dispatch(getToolCycle());
+  },[])
 
   const taskList = useMemo(() => {
     let list = [] as SelectList
@@ -51,7 +56,6 @@ export const PostForm: React.FC<Props> = (props: Props) => {
               <Input
                 label="タイトル"
                 value={title}
-                id={'postTitle'}
                 onChangeAction={(v) => {
                   titleSet(v);
                 }}
@@ -61,7 +65,6 @@ export const PostForm: React.FC<Props> = (props: Props) => {
               <Textarea
                 label="詳細"
                 value={body}
-                id={'postTextarea'}
                 onChangeAction={(v) => {
                   bodySet(v);
                 }}
@@ -73,6 +76,7 @@ export const PostForm: React.FC<Props> = (props: Props) => {
                 console.log(value)
               }}
             />
+            <a href="/toolCycle" target="_brank">タスク循環を確認する</a>
             <div className="field">
               <button className="btn" onClick={addAction}>
                 add
@@ -84,4 +88,4 @@ export const PostForm: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default PostForm;
+export default TaskForm;

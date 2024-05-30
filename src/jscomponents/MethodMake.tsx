@@ -1,34 +1,52 @@
 import React, { useState } from "react";
+import { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import type { TaskState, Task } from "../store/taskSlice";
+import  { getMethod, sendMethod } from "../store/methodSlice";
+import type { MethodState } from "../store/methodSlice";
 import type { AppDispatch } from "../store";
+import { countCharacters } from "../lib/helper";
 
 import Input from "./parts/Input";
 import Textarea from "./parts/Textarea";
 import Button from "./parts/Button";
 
-export const TaskCycle: React.FC = () => {
-  const tasks = useSelector((state: TaskState) => {
-    return state.tasks;
+export const MethodMake: React.FC = () => {
+  const methods = useSelector((state: MethodState) => {
+    return state.methods;
   });
   const [title, titleSet] = useState("");
   const [body, bodySet] = useState("");
-  const [taskList, taskListSet] = useState(tasks ?? []);
+  const [methodList, methodListSet] = useState(methods ?? []);
 
   const dispatch = useDispatch<AppDispatch>();
 
+  useMemo(() => {
+    dispatch(getMethod())
+  },[title])
+
   const addActiojn = () => {
     const item = {
-      id: taskList.length + 1,
+      id: methodList.length + 1,
       title: title,
       body: body,
     };
-    taskListSet([...taskList, item]);
+    dispatch(sendMethod(item)).then((res) => {
+      console.log(res)
+    })
+    // taskListSet([...taskList, item]);
   };
+
+  const setEndPic = (text:string) => {
+    const setText = text.slice(0, 64)
+    const num = countCharacters(text)
+    console.log(num)
+    return  setText + (num > 40 ? "...":"")
+  }
 
   return (
     <div className="task-cycle">
       <div className="task-input max420">
+        <h4 className="field-title pt-2 pb-2">手段作成</h4>
         <div className="field pb-1">
           <Input
             label="タイトル"
@@ -49,11 +67,11 @@ export const TaskCycle: React.FC = () => {
           <Button label="追加" onClickAction={addActiojn} />
         </div>
       </div>
-      <div className="task-output p-2 ">
-        {(taskList ?? []).map((item) => (
+      <div className="task-output p-2 flex">
+        {(methods ?? []).map((item) => (
           <div key={item.id} className="card">
             <h4 className="title pb-1">{item.title}</h4>
-            <div className="body">{item.body.slice(0, 64)}...</div>
+            <div className="body">{setEndPic(item.body) }</div>
           </div>
         ))}
       </div>
@@ -61,4 +79,4 @@ export const TaskCycle: React.FC = () => {
   );
 };
 
-export default TaskCycle;
+export default MethodMake;

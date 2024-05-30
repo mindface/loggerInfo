@@ -1,13 +1,13 @@
 import React, { useState, useMemo } from "react";
 import { getRandomString } from "../../lib/helper";
 
-interface selectItem {
+export interface SelectItem {
   id: string;
   value: string;
   name: string;
 }
 
-type SelectList = selectItem[];
+export type SelectList = SelectItem[];
 
 type Props = {
   label?: string;
@@ -23,7 +23,7 @@ function Select(props: Props) {
 
   return (
     <div className={`select-box d-inline-b ${className}`}>
-      <label htmlFor="" className="label"></label>
+      { label && <label htmlFor="" className="label pb-1">{label}</label>}
       <select
         className="select"
         onChange={(e) => {

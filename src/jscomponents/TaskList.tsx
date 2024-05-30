@@ -14,7 +14,7 @@ type Props = {
   edititem?: PostType;
 };
 
-export const PostForm: React.FC<Props> = (props: Props) => {
+export const TaskList: React.FC<Props> = (props: Props) => {
   const toolCycles = useSelector((state: RootState) => state.toolCycleStore.toolCycles);
   const dispatch = useDispatch<AppDispatch>();
   const [title, titleSet] = useState("");
@@ -46,42 +46,12 @@ export const PostForm: React.FC<Props> = (props: Props) => {
     <div className="task-memory">
       <div className="post-fields">
         <div className="task-memory-input max420">
-          <h4 className="field-title pt-2 pb-2">タスク記録する</h4>
-            <div className="field">
-              <Input
-                label="タイトル"
-                value={title}
-                id={'postTitle'}
-                onChangeAction={(v) => {
-                  titleSet(v);
-                }}
-              /> 
-            </div>
-            <div className="field">
-              <Textarea
-                label="詳細"
-                value={body}
-                id={'postTextarea'}
-                onChangeAction={(v) => {
-                  bodySet(v);
-                }}
-              />
-            </div>
-            <Select
-              selectList={taskList ?? []}
-              onChangeAction={(value) => {
-                console.log(value)
-              }}
-            />
-            <div className="field">
-              <button className="btn" onClick={addAction}>
-                add
-              </button>
-            </div>
+          <h4 className="field-title pt-2 pb-2">タスク一覧</h4>
+          TaskList
         </div>
       </div>
     </div>
   );
 };
 
-export default PostForm;
+export default TaskList;

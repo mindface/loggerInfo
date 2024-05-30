@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { Provider } from "react-redux";
-import { taskStore } from "../store/taskSlice";
-import TaskMake from "../jscomponents/TaskMake";
-import TaskCycle from "../jscomponents/TaskCycle";
+import ToolList from "../jscomponents/ToolList";
+import TaskCycle from "../jscomponents/ToolCycle";
+import { store } from "../store";
 
-const TaskCycleContainer: React.FC = () => {
-  const [tab, tabSet] = useState("make");
+const ToolCycleContainer: React.FC = () => {
+  const [tab, tabSet] = useState("list");
   return (
     <div className="task-cycle">
-      {/* {posts.map((item) => <>{item.title}</>)} */}
-      <Provider store={taskStore}>
+      <Provider store={store}>
         <>
           <div className="tab-action">
-            <button className="btn" onClick={() => tabSet("make")}>
-              タスクを作る
+            <button className="btn" onClick={() => tabSet("list")}>
+              サイクル一覧
             </button>
             <button className="btn" onClick={() => tabSet("cycle")}>
               サイクル構造にする
@@ -23,7 +22,7 @@ const TaskCycleContainer: React.FC = () => {
             </button>
           </div>
           <div className="tab-content">
-            {tab === "make" && <TaskMake />}
+            {tab === "list" && <ToolList />}
             {tab === "cycle" && <TaskCycle />}
             {tab === "json" && <>json情報化</>}
           </div>
@@ -33,4 +32,4 @@ const TaskCycleContainer: React.FC = () => {
   );
 };
 
-export default TaskCycleContainer;
+export default ToolCycleContainer;

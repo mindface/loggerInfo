@@ -75,6 +75,7 @@
 		background-color: var(--color-base);
 		color: var(--color-white);
 	}
+
 	.p-05 {
 		padding: 4px;
 	}
@@ -173,9 +174,31 @@
 	.minh320 {
 		min-height:320px;
 	}
-
+	.relative {
+		position: relative;
+	}
+	.absolute-tl {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+	}
+	.absolute-tr {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 1;
+	}
+	.bg-white {
+		background-color: var(--white-color);
+	}
+	.maxvhCardArea {
+		max-height: 250px;
+		overflow: auto;
+	}
 	.card {
 		display: inline-block;
+		min-height: 96px;
 		max-width: 320px;
 		width: 100%;
 		margin: 0 8px 0 0;
